@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rep
+  namespace: test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      env: test
+  template:
+    metadata:
+      name: reppod
+      labels: 
+        env: test
+    spec:
+      containers:
+      - name: r1
+        image: tutum/apache-php
+      - name: r2
+        image: centos
+        command: ['/bin/bash','-c','sleep 1200']

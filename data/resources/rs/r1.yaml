@@ -1,0 +1,55 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "3"
+    deployment.kubernetes.io/max-replicas: "4"
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2019-07-15T20:49:06Z"
+  generation: 2
+  labels:
+    app: tutum
+    pod-template-hash: 79c49778fd
+  name: tutum-79c49778fd
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: tutum
+    uid: fcc3e936-a741-11e9-93c4-0ad77d4de64e
+  resourceVersion: "242781"
+  selfLink: /apis/extensions/v1beta1/namespaces/default/replicasets/tutum-79c49778fd
+  uid: fcc52b95-a741-11e9-93c4-0ad77d4de64e
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: tutum
+      pod-template-hash: 79c49778fd
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: tutum
+        pod-template-hash: 79c49778fd
+    spec:
+      containers:
+      - image: tutum/apache-php
+        imagePullPolicy: Always
+        name: apache-php
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  fullyLabeledReplicas: 3
+  observedGeneration: 2
+  readyReplicas: 3
+  replicas: 3

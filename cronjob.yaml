@@ -1,0 +1,19 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cron1
+  namespace: test
+spec:
+  concurrencyPolicy: Forbid
+  schedule: '*/2 * * * *'
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: cronpd
+        spec:
+          containers:
+          - name: cr1
+            image: centos
+            command: ['/bin/bash','-c','echo hello']
+          restartPolicy: Never    

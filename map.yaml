@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: map1
+  namespace: test
+spec:
+  containers:
+  - name: conmap1
+    image: centos
+    env:
+    - name: user
+      valueFrom:
+        configMapKeyRef:
+          name: conf1
+          key: var1
+    command: ['/bin/bash','-c','while true;do echo $user;sleep 1;done']
+  

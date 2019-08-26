@@ -1,0 +1,17 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata: 
+  name: cronjob
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: cron
+        spec:
+          containers:
+          - name: cron1
+            image: centos
+            command: ['/bin/echo','hello']
+          restartPolicy: Never

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret 
+metadata:   
+  name: sec1
+  namespace: test
+stringData:
+  var1: value1

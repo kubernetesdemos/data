@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: v1
+  namespace: test
+spec:
+  nodeName: rathihimanshu2c.mylabserver.com
+  containers:
+  - name: vc1
+    image: centos
+    command: ['/bin/bash','-c','while true;do X=$[$X+1];echo $X > /usr/share/nginx/html/index.html;sleep 1;done']
+    volumeMounts:
+    - name: vol1
+      mountPath: /usr/share/nginx/html
+  - name: vc2
+    image: nginx
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: vol1
+      mountPath: /usr/share/nginx/html
+  volumes:
+  - name: vol1
+    hostPath: 
+      path: /root/datadir

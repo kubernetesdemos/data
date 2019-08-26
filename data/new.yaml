@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: newone
+spec:
+  containers:
+  - name: centy
+    image: centos
+    env:
+    - name: var1
+      value: value1
+    command: ["/bin/bash"]
+    args: ["-c","while true;do echo $var1;sleep 1;done"]

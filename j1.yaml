@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: v1
+  namespace: test
+spec:
+  completions: 5
+  parallelism: 2
+#  selector:
+#  matchLabels:
+#      type: job
+  template:
+    metadata:
+      labels:
+        type: job
+    spec:
+      containers:
+      - name: j1
+        image: centos
+        command: ['/bin/sh']
+        args: ['-c','sleep 10']
+      restartPolicy: Never
+    
